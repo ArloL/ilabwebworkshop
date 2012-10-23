@@ -1,1 +1,1 @@
-Visit the site: <ilabwebworkshop.github.com>
+Visit the [site](ilabwebworkshop.github.com).
