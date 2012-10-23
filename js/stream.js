@@ -22,8 +22,8 @@ var start = Math.round(new Date().getTime()/1000-15);
 var frowns = [];
 var smiles = [];
 
-var frownLine = raphael.path('M0,100').attr({stroke:blue});
-var smileline = raphael.path('M0,100').attr({stroke:orange});
+var frownline = raphael.path('M0,100').attr({stroke: red});
+var smileline = raphael.path('M0,100').attr({stroke: blue});
 
 var baseURL = 'http://search.twitter.com/search.json';
 var query = '?lang=en&';
@@ -63,22 +63,23 @@ function update() {
 				}
 			};
 
-			var smilepath = "M0,100";
-			var frownpath = "M0,100";
+			var smilepath = 'M0,100';
+			var frownpath = 'M0,100';
 
-			for (var i = frowns.length - 1; i >= 0; i--) {
-				frownpath += "L" + i * 5 + "," + (100 - 3 * frowns[i]);
+			for (var i = 0; i < frowns.length; i++) {
+				frownpath += 'L' + i * 5 + ',' + (100 - 3 * frowns[i]);
+			};
+			for (var i = 0; i < smiles.length; i++) {
+				smilepath += 'L' + i * 5 + ',' + (100 - 3 * smiles[i]);
 			};
 
-			for (var i = smiles.length - 1; i >= 0; i--) {
-				smilepath += "L" + i * 5 + "," + (100 - 3 * smiles[i]);
-			};
-
-			frownLine.animate({path: frownpath}, 2000);
-			smileline.animate({path: smileline}, 2000);
+			frownline.animate({path: frownpath}, 2000);
+			smileline.animate({path: smilepath}, 2000);
+			
+			query = data.refresh_url;
 
 			console.log(frowns, smiles);
-			query = data.refresh_url;
+			
 			setTimeout(update, 2000);
 		}
 	);
