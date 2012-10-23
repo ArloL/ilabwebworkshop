@@ -52,6 +52,31 @@ function update() {
 					smiles[diff]++;
 				}
 			};
+			for (var i = frowns.length - 1; i >= 0; i--) {
+				if(typeof frowns[i] === "undefined") {
+					frowns[i] = 0;
+				}
+			};
+			for (var i = smiles.length - 1; i >= 0; i--) {
+				if(typeof smiles[i] === "undefined") {
+					smiles[i] = 0;
+				}
+			};
+
+			var smilepath = "M0,100";
+			var frownpath = "M0,100";
+
+			for (var i = frowns.length - 1; i >= 0; i--) {
+				frownpath += "L" + i * 5 + "," + (100 - 3 * frowns[i]);
+			};
+
+			for (var i = smiles.length - 1; i >= 0; i--) {
+				smilepath += "L" + i * 5 + "," + (100 - 3 * smiles[i]);
+			};
+
+			frownLine.animate({path: frownpath}, 2000);
+			smileline.animate({path: smileline}, 2000);
+
 			console.log(frowns, smiles);
 			query = data.refresh_url;
 			setTimeout(update, 2000);
