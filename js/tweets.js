@@ -11,11 +11,15 @@ jQuery('#query').change(function(event) {
 			var content = jQuery('.article');
 			for (var i = tweets.length - 1; i >= 0; i--) {
 				var tweet = tweets[i];
-				var tweetDiv = '<p class="tweet" id="tweet' + tweet.id_str + '">';
-				tweetDiv += '<img src="' + tweet.profile_image_url + '">'
-				tweetDiv += tweet.from_user + ': ' + tweet.text;
-				tweetDiv += '</p>';
-				jQuery(tweetDiv).appendTo(content);
+				var tweetParagraph = jQuery('<p />', {
+				    class: 'tweet',
+				    id: 'tweet',
+					text: tweet.from_user + ': ' + tweet.text
+				});
+				jQuery('<img />',{
+					src: tweet.profile_image_url
+				}).prependTo(tweetParagraph);
+				tweetParagraph.appendTo(content);
 			};
 		}
 	);
