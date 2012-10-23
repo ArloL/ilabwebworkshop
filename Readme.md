@@ -1,1 +1,1 @@
-Visit the [site](http://ilabwebworkshop.github.com).
+Visit the [site](http://arlol.github.com/ilabwebworkshop/).
